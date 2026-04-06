@@ -1,14 +1,11 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Ruta raíz
-app.get('/', (req, res) => {
-  res.send('Hola mundo');
-});
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware básico para manejo de errores
 app.use((err, req, res, next) => {
